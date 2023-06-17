@@ -67,17 +67,14 @@ namespace ToyRobotSimulation.BusinessLogics
             if (command == Commands.MOVE)
             {
                 toyRobot.Move(_tableTop);
-                Console.WriteLine("The toy has moved.");
             }
             else if (command == Commands.LEFT)
             {
                 toyRobot.TurnLeft();
-                Console.WriteLine("The toy has turned left.");
             }
             else if (command == Commands.RIGHT)
             {
                 toyRobot.TurnRight();
-                Console.WriteLine("The toy has turned right.");
             }
             else if (command == Commands.REPORT)
             {

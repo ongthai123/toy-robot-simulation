@@ -22,6 +22,19 @@ namespace ToyRobotSimulation.BusinessLogics
         {
             toyRobot = new ToyRobot();
 
+            Console.WriteLine("Instruction");
+
+            Console.WriteLine(@"
+Command list:
+- PLACE X,Y,F
+- MOVE
+- LEFT
+- RIGHT
+- REPORT
+");
+
+            Console.WriteLine("F: NORTH or EAST or SOUTH or WEST\n");
+
             while (true)
             {
                 AskForCommand();
@@ -67,17 +80,14 @@ namespace ToyRobotSimulation.BusinessLogics
             if (command == Commands.MOVE)
             {
                 toyRobot.Move(_tableTop);
-                Console.WriteLine("The toy has moved.");
             }
             else if (command == Commands.LEFT)
             {
                 toyRobot.TurnLeft();
-                Console.WriteLine("The toy has turned left.");
             }
             else if (command == Commands.RIGHT)
             {
                 toyRobot.TurnRight();
-                Console.WriteLine("The toy has turned right.");
             }
             else if (command == Commands.REPORT)
             {
@@ -101,8 +111,9 @@ namespace ToyRobotSimulation.BusinessLogics
 
                 var y = Convert.ToInt16(position[1].Trim());
 
-                if (x < 0 || y < 0 || x > 4 || y > 4)
+                if (x < 0 || y < 0 || x > _tableTop.MaxX || y > _tableTop.MaxY)
                 {
+                    Console.WriteLine($"Valid X: 0-{_tableTop.MaxX} and Y: 0-{_tableTop.MaxY}");
                     hasValidPlace = false;
                 }
 
